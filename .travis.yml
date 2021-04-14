@@ -99,7 +99,7 @@ before_install:
 
 install:
  # Install interceptors
- - sudo apt-get install -y confluent-librdkafka-plugins
+ - apt-get install -y confluent-librdkafka-plugins
  - tools/install-interceptors.sh
  - if [[ $BUILD_WHEELS != 1 ]]; then pip install -r tests/requirements.txt ; fi
  - if [[ $MK_DOCS == y ]]; then pip install -r docs/requirements.txt; fi
