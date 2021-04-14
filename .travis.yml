@@ -19,7 +19,14 @@ jobs:
     python: "3.6"
     env: LD_LIBRARY_PATH="$PWD/tmp-build/lib"
     services: docker
-
+  - name: "Source package verification with Python 3.6 (Linux_arm64)"
+    os: linux
+    language: python
+    dist: xenial
+    python: "3.6"
+    env: LD_LIBRARY_PATH="$PWD/tmp-build/lib"
+    services: docker
+  
   - name: "Source package verification with Python 2.7 (OSX)"
     os: osx
     python: "2.7"
@@ -61,13 +68,19 @@ jobs:
       - tools/wheels/build-wheels.bat x86 win32 dest wheelhouse
 
   - name: "Wheels: Linux x64"
-    if: tag is present
+    #if: tag is present
     language: python
     python: "3.8"
     services: docker
     env: BUILD_WHEELS=1
     script: tools/wheels/build-wheels.sh ${LIBRDKAFKA_VERSION#v} wheelhouse
-
+  - name: "Wheels: Linux arm64"
+    language: python
+    python: "3.8"
+    services: docker
+    env: BUILD_WHEELS=1
+    script: tools/wheels/build-wheels.sh ${LIBRDKAFKA_VERSION#v} wheelhouse
+  
   - name: "Wheels: MacOSX x64"
     if: tag is present
     os: osx
