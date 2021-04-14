@@ -24,6 +24,7 @@ jobs:
     language: python
     dist: xenial
     python: "3.6"
+    arch: arm64
     env: LD_LIBRARY_PATH="$PWD/tmp-build/lib"
     services: docker
   
@@ -78,6 +79,7 @@ jobs:
     language: python
     python: "3.8"
     services: docker
+    arch: arm64
     env: BUILD_WHEELS=1
     script: tools/wheels/build-wheels.sh ${LIBRDKAFKA_VERSION#v} wheelhouse
   
